@@ -8,11 +8,22 @@ import UIKit
 
 let numbers = [1,1,2,4,4,4,6,6,7,8]
 
-var numbersWithNoDuplicates = [Int]()
+var setWithNoDuplicates: Set<Int> = [1,1,2,4,4,4,6,6,7,8]
 
-// Your code here
+var numbersWithNoDuplicates = [Int](setWithNoDuplicates).sorted()
 
+print(numbersWithNoDuplicates.sorted())
+
+assert(numbersWithNoDuplicates == [1,2,4,6,7,8], "Was expecting [1,2,4,6,7,8], but got \(numbersWithNoDuplicates)")
+
+// !!! ALT ANSWER !!!
+//let numbers = [1,1,2,4,4,4,6,6,7,8]
+//var numbersWithNoDuplicates = [Int]()
+//var setWithNoDuplicates: Set<Int> = Set(numbers)
+//numbersWithNoDuplicates = Array(setWithNoDuplicates).sorted()
+//print(numbersWithNoDuplicates.sorted())
 //assert(numbersWithNoDuplicates == [1,2,4,6,7,8], "Was expecting [1,2,4,6,7,8], but got \(numbersWithNoDuplicates)")
+
 
 // Questions Two
 
@@ -33,11 +44,25 @@ var scoresThatAppearOnce = [Int]()
 // Given arrOne and arrTwo, create a variable arrThree which is equal to the UNION of arrOne and arrTwo.  It should not contain any duplicate elements.  Sort arrThree from smallest to greatest.
 
 let arrOne = [1,2,3,4,5]
+
 let arrTwo = [3,4,5,6,7]
 
 var arrThree: [Int] = []
 
-// Your code here
+var oneSet: Set<Int> = Set(arrOne)
+
+var twoSet: Set<Int> = Set(arrTwo)
+
+arrThree = Array(oneSet.union(twoSet)).sorted()
+
+assert(arrThree == [1,2,3,4,5,6,7], "Was expecting [1,2,3,4,5,6,7], but got \(arrThree)")
+
+
+//var setScore: Set<Int> = Set(scores)
+//
+//var scoresThatAppearOnce = [Int](setScore).sorted()
+//
+//print(scoresThatAppearOnce)
 
 //assert(arrThree == [1,2,3,4,5,6,7], "Was expecting [1,2,3,4,5,6,7], but got \(arrThree)")
 
@@ -46,13 +71,18 @@ var arrThree: [Int] = []
 // Given arrFour and arrFive, create a variable arrSix with is equal to the INTERSECTION of arrFour and arrFive.  If should not contain any duplicate elements.  Sort arrSix from smallest to greatest.
 
 let arrFour = [1,2,3,4,5]
+
 let arrFive = [3,4,5,6,7]
 
 var arrSix: [Int] = []
 
-// Your code here
+var threeSet: Set<Int> = Set(arrFour)
 
-//assert(arrSix == [3,4,5], "Was expecting [3,4,5], but got \(arrSix)")
+var fourSet: Set<Int> = Set(arrFive)
+
+arrSix = Array(threeSet.intersection(fourSet)).sorted()
+
+assert(arrSix == [3,4,5], "Was expecting [1,2,3,4,5,6,7], but got \(arrSix)")
 
 // Question Four
 
@@ -65,9 +95,15 @@ let numsFour = [1, 3, 4, 5, 6, 7, 9]
 
 var allNumsWithNoDuplicates: [Int] = []
 
-// Your code here
+var combinedNums = numsOne + numsTwo + numsThree + numsFour
 
-//assert(allNumsWithNoDuplicates == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "Was expecting [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], but got \([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])")
+var combinedNumsSet = Set(combinedNums)
+
+allNumsWithNoDuplicates =  Array(combinedNumsSet).sorted()
+
+print(allNumsWithNoDuplicates)
+
+assert(allNumsWithNoDuplicates == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "Was expecting [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], but got \([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])")
 
 
 // Question Five
